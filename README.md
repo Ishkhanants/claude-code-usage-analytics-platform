@@ -4,8 +4,15 @@ End-to-end analytics platform for Claude Code developer telemetry — from raw J
 
 ## Architecture
 
+Data flows through four sequential layers:
+
+1. **Ingestion** — `generate_fake_data.py` produces synthetic JSONL telemetry and a CSV employee directory
+2. **ETL** — `src/etl.py` streams the JSONL line-by-line, batch-inserts events into SQLite, then aggregates sessions in a second SQL pass
+3. **Analytics / ML** — `src/analytics.py`, `src/ml.py`, and `src/cohort.py` query the warehouse and return DataFrames ready for rendering
+4. **Dashboard** — `src/dashboard.py` consumes those functions and renders a 7-page Streamlit interface with Plotly charts
+
 ```
-claude_analytics/
+claude-code-usage-analytics-platform/
 ├── data/                          # Generated telemetry (gitignored)
 │   ├── telemetry_logs.jsonl       # Raw JSONL event batches
 │   └── employees.csv              # Engineer directory
@@ -16,9 +23,30 @@ claude_analytics/
 │   ├── etl.py                     # Streaming ETL pipeline
 │   ├── analytics.py               # SQL-backed analytics functions
 │   ├── ml.py                      # ML: forecasting, anomaly detection, clustering
+│   ├── cohort.py                  # Retention, funnels, inter-session analysis
+│   ├── validation.py              # Data quality checks + scored report
 │   └── dashboard.py               # Streamlit multi-page dashboard
 ├── generate_fake_data.py          # Synthetic data generator
 └── requirements.txt
+```
+
+## Dependencies
+
+Requires **Python 3.8+**
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `streamlit` | ≥1.35.0 | Dashboard framework |
+| `pandas` | ≥2.0.0 | DataFrame operations |
+| `numpy` | ≥1.24.0 | Numerical computing |
+| `plotly` | ≥5.18.0 | Interactive charts |
+| `scikit-learn` | ≥1.3.0 | ML models (IsolationForest, KMeans, polynomial regression) |
+| `scipy` | ≥1.11.0 | Statistical tests (ANOVA, Spearman) |
+
+Install all at once:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ## Quick Start
@@ -37,6 +65,8 @@ python3 src/etl.py
 streamlit run src/dashboard.py
 ```
 
+The ETL step is idempotent — safe to re-run. Use `run_etl(force=True)` in Python to reload from scratch.
+
 ## Data Model
 
 | Table | Rows (sample) | Description |
@@ -47,6 +77,8 @@ streamlit run src/dashboard.py
 | `tool_events` | 181,082 | Tool decisions + results |
 | `user_prompts` | 20,829 | User prompt events |
 | `api_errors` | 873 | API error events |
+
+All tables are indexed on `user_email`, `timestamp`, `session_id`, and `model` for fast filtering.
 
 ## Dashboard Pages
 
@@ -80,3 +112,11 @@ streamlit run src/dashboard.py
 - One-way **ANOVA** across engineering practices
 - **Spearman correlation** between seniority and cost per session
 - Full descriptive statistics (skewness, kurtosis, percentiles)
+
+## Data Quality
+
+`src/validation.py` runs 10 automated checks on every ETL load and produces a weighted quality score (0–100):
+
+- Schema completeness, referential integrity, null rates
+- Value range plausibility, duplicate detection, business rules
+- Temporal consistency, outlier distribution, volume sanity, session completeness

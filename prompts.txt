@@ -48,3 +48,10 @@ Problem with this element
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Anthropic_logo.svg/320px-Anthropic_
 logo.svg.png" alt="0" style="width: 140px; max-width: 100%;">
+
+----------------------------------------------------------------------------------------------------------
+                                                 PROMPT 5
+----------------------------------------------------------------------------------------------------------
+
+Does README.md include detailed setup instructions, an overview of your architecture, and a list of 
+dependencies?
