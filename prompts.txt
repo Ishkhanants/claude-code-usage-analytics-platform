@@ -1,0 +1,57 @@
+----------------------------------------------------------------------------------------------------------
+                                                 PROMPT 1
+----------------------------------------------------------------------------------------------------------
+
+I am working on a technical assignment, which is to build an end-to-end analytics platform, that processes 
+telemetry data from Claude Code sessions, transforming raw event streams into actionable insights regarding 
+developer patterns and user behavior through an interactive dashboard.
+
+I have uploaded the dataset generator file and its README.md file.
+
+The solution should demonstrate proficiency in the following areas:
+● Data Processing: Ingest, clean, and structure the telemetry logs and employee metadata. Identify main 
+   entities in the system. Design a storage mechanism (SQL) that allows for efficient retrieval
+● Analytics & Insights: Extract meaningful patterns, such as token consumption trends by user role, peak 
+   usage times, and common code generation behaviors
+● Visualization: Build an interactive dashboard (Streamlit) that presents these insights clearly for 
+   different stakeholders
+● Technical Implementation: The solution includes basic error handling, datavalidation, and a clean 
+   architectural design
+
+After, create and integrate also the following features to the project:
+● Predictive Analytics: ML components for trend forecasting or anomaly detection
+● Advanced Statistical Analysis: Provide deeper insights into Claude Code usage patterns
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++                                 BUGFIXES AFTER PROMPT 1 (PROMPTS 2 -> 4)                               +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+----------------------------------------------------------------------------------------------------------
+                                                 PROMPT 2
+----------------------------------------------------------------------------------------------------------
+
+There is such error when dashboard running
+
+ValueError: Value of 'color' is not the name of a column in 'data_frame'. Expected one of ['level', 
+'level_num', 'engineers', 'api_calls', 'total_cost', 'cost_per_engineer'] but received: practice
+
+----------------------------------------------------------------------------------------------------------
+                                                 PROMPT 3
+----------------------------------------------------------------------------------------------------------
+
+AttributeError: 'Figure' object has no attribute 'add_hrule'
+
+----------------------------------------------------------------------------------------------------------
+                                                 PROMPT 4
+----------------------------------------------------------------------------------------------------------
+
+Problem with this element
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Anthropic_logo.svg/320px-Anthropic_
+logo.svg.png" alt="0" style="width: 140px; max-width: 100%;">
+
+----------------------------------------------------------------------------------------------------------
+                                                 PROMPT 5
+----------------------------------------------------------------------------------------------------------
+
+Does README.md include detailed setup instructions, an overview of your architecture, and a list of 
+dependencies?
