@@ -255,7 +255,12 @@ PAGES = {
 }
 
 with st.sidebar:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Anthropic_logo.svg/320px-Anthropic_logo.svg.png", width=140)
+    st.markdown("""
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60" width="140" style="display:block;margin-bottom:6px">
+          <text x="0" y="46" font-family="Georgia, serif" font-size="42" font-weight="700"
+                fill="currentColor" letter-spacing="-1">Anthropic</text>
+        </svg>
+    """, unsafe_allow_html=True)
     st.markdown("## Claude Code Analytics")
     st.markdown("*Internal developer telemetry*")
     st.divider()
@@ -389,7 +394,7 @@ elif page == "trends":
     st.markdown('<p class="section-header">💵 Weekly Average Cost Per Session</p>', unsafe_allow_html=True)
     fig4 = px.line(weekly, x="week", y="avg_cost_per_session",
                    markers=True, color_discrete_sequence=["#ff9f43"], line_shape="spline")
-    fig4.add_hrule(y=weekly["avg_cost_per_session"].mean(), line_dash="dash",
+    fig4.add_hline(y=weekly["avg_cost_per_session"].mean(), line_dash="dash",
                    line_color="#aaaaaa", annotation_text="Period avg")
     st.plotly_chart(fig_theme(fig4, 280), use_container_width=True)
 

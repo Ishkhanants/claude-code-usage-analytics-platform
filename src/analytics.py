@@ -145,13 +145,14 @@ def cost_by_level() -> pd.DataFrame:
         SELECT
             e.level,
             e.level_num,
+            e.practice,
             COUNT(DISTINCT r.user_email)    AS engineers,
             COUNT(*)                        AS api_calls,
             ROUND(SUM(r.cost_usd),2)        AS total_cost,
             ROUND(SUM(r.cost_usd)/COUNT(DISTINCT r.user_email),2) AS cost_per_engineer
         FROM api_requests r
         JOIN employees e ON e.email = r.user_email
-        GROUP BY e.level, e.level_num
+        GROUP BY e.level, e.level_num, e.practice
         ORDER BY e.level_num
     """)
 

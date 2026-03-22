@@ -21,3 +21,30 @@ The solution should demonstrate proficiency in the following areas:
 After, create and integrate also the following features to the project:
 ● Predictive Analytics: ML components for trend forecasting or anomaly detection
 ● Advanced Statistical Analysis: Provide deeper insights into Claude Code usage patterns
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++                                 BUGFIXES AFTER PROMPT 1 (PROMPTS 2 -> 4)                               +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+----------------------------------------------------------------------------------------------------------
+                                                 PROMPT 2
+----------------------------------------------------------------------------------------------------------
+
+There is such error when dashboard running
+
+ValueError: Value of 'color' is not the name of a column in 'data_frame'. Expected one of ['level', 
+'level_num', 'engineers', 'api_calls', 'total_cost', 'cost_per_engineer'] but received: practice
+
+----------------------------------------------------------------------------------------------------------
+                                                 PROMPT 3
+----------------------------------------------------------------------------------------------------------
+
+AttributeError: 'Figure' object has no attribute 'add_hrule'
+
+----------------------------------------------------------------------------------------------------------
+                                                 PROMPT 4
+----------------------------------------------------------------------------------------------------------
+
+Problem with this element
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Anthropic_logo.svg/320px-Anthropic_
+logo.svg.png" alt="0" style="width: 140px; max-width: 100%;">

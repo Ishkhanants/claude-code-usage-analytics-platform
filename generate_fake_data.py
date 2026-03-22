@@ -598,7 +598,7 @@ def main():
     parser.add_argument("--num-users", type=int, default=30, help="Number of fake users")
     parser.add_argument("--num-sessions", type=int, default=500, help="Total number of sessions")
     parser.add_argument("--days", type=int, default=30, help="Number of days to span")
-    parser.add_argument("--output-dir", default="output", help="Output directory")
+    parser.add_argument("--output-dir", default="data", help="Output directory")
     parser.add_argument("--seed", type=int, default=42, help="Random seed")
     args = parser.parse_args()
 
